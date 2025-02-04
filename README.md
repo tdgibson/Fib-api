@@ -1,66 +1,112 @@
-Fibonacci Sequence API
+# Fibonacci Sequence API
 
-This API accepts an integer n as input and returns the nth Fibonacci number. The Fibonacci sequence is defined as:
+This API accepts an integer `n` as input and returns the `n`th Fibonacci number.  
 
-F(0) = 0
-F(1) = 1
-F(n) = F(n-1) + F(n-2) for n > 1
+### **Fibonacci Sequence Definition**  
+\[  F(0) = 0 \]  
+\[  F(1) = 1 \]  
+\[  F(n) = F(n-1) + F(n-2), \quad \text{for } n > 1  \]
 
-To run locally you can follow these steps.
+## 🚀 Getting Started
 
-Clone this repository:
-    git clone https://github.com/tdgibson/Fib-api.git
-    cd Fib-api
+### **Clone the Repository**
+```sh
+git clone https://github.com/tdgibson/Fib-api.git
+cd Fib-api
+```
 
-Install dependencies:
-    npm install
+### **Install Dependencies**
+```sh
+npm install
+```
 
-Start the server:
-    npm start
+### **Start the Server**
+```sh
+npm start
+```
+This will start the server at **http://localhost:3000**.
 
-This will start the server at http://localhost:3000.
+## 🔍 Testing the API
 
-You can test this API using a browser and inputting the URL:
-    http://localhost:3000/fibonacci?n=10
-
-Your response should be:
-    {
+### **Local Testing**
+You can test the API using a browser or API tools (Postman, cURL) with:  
+```
+http://localhost:3000/fibonacci?n=10
+```
+Expected response:
+```json
+{
   "fib": 55
 }
+```
 
-Dependencies include express, which is a minimal framework for Node.js
+### **Production Testing**
+The API is deployed on Render. (Note: Free-tier instances may sleep due to inactivity.)  
 
+Test it with:
+```
+https://fib-api-we8y.onrender.com/fibonacci?n=10
+```
+Expected response:
+```json
+{
+  "fib": 55
+}
+```
 
-Production:
-    This service is currently running in a production environment using the online Web Service hosted through Render. (However the free account will spin it down with inactivity, but let me know if you want to test it and I can spin it up)
+---
 
-    To test in Production you can use this sample URL:
-    https://fib-api-we8y.onrender.com/fibonacci?n=10
-    
-    Your response should be:
-        {
-    "fib": 55
-        }
+## 📺 Dependencies
+This API uses:
+- **Express.js** – A minimal Node.js framework for building web applications.
 
-Containerization
-    Creating a Docker container would give this API advantages, such as consistency across environments, easy deployment to any cloud provider, and being isolated so it wouldn't conflict with other services.
-    A Docker container is also easy to scale when deployed to a Kubernetes cluster.
+---
 
-Continuous Integration
-    Code Repository in GitHub
-    GitHub Actions could run tests (I did not implement any tests)
-    GitHuyb Actions to build Docker Image
+## 🐟 Containerization (Docker)
+### **Why use Docker?**
+- **Consistency:** Runs the same across all environments.  
+- **Easy Deployment:** Works on any cloud provider.  
+- **Isolation:** Prevents conflicts with other services.  
+- **Scalability:** Can be deployed in Kubernetes for auto-scaling.
 
-Continuous Deployment
-    Push Image to Docker Registry
-    Deploy using a Cloud Service (In this instance, I used Render)
-    Rolling updates to avoid downtime
+---
 
-Logging and Monitoring
-    Simple loggging using different log levels as necessary would collect errors and events.
-    Monitoring through a Promethius + Grafana stack would be simple and effective to setup.  You could use that data to know when to scale.  
-    Adding a Health Check endpoint would be a good idea so you could be notified if any issues cause the service to go down.
+## 🔄 CI/CD (Continuous Integration & Deployment)
 
-Scaling
-    Scale up more containers in a Kubernetes cluster to handle increased requests.  Can be automated and wouldn't cause downtime.
-    You could add a database with already computed numbers and cache them so they could be retrieved faster and use fewer resources.
+### **Continuous Integration**
+- GitHub repository for version control.
+- **GitHub Actions** (not implemented yet) could:
+  - Run tests.
+  - Build Docker images.
+
+### **Continuous Deployment**
+- **Push Docker Image** to a container registry (e.g., Docker Hub).
+- **Deploy on a Cloud Service** (currently hosted on Render).
+- **Rolling updates** for zero downtime.
+
+---
+
+## 📊 Logging & Monitoring
+
+- **Logging:** Use different log levels (`info`, `warn`, `error`) to track issues.  
+- **Monitoring:**  
+  - **Prometheus + Grafana** for performance tracking and scaling insights.  
+  - **Health Check Endpoint** to notify failures.
+
+---
+
+## 📈 Scaling Strategies
+
+- **Kubernetes Auto-Scaling:** Increase container instances based on traffic.
+- **Caching:** Store computed Fibonacci numbers in Redis or a database for faster responses.  
+- **Load Balancing:** Distribute requests across multiple instances.
+
+---
+
+### ✅ Future Enhancements
+- Implement **unit tests**.
+- Add **Dockerfile** for containerization.
+- Improve **error handling and input validation**.
+
+---
+
